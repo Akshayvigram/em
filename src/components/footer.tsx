@@ -9,11 +9,11 @@ export const Footer = (): JSX.Element => {
         {/* ---------- Column 1: Logo & Description ---------- */}
         <div>
           <h2 className="text-lg font-bold mb-3">EASEMILKER</h2>
-          <p className="text-sm leading-relaxed text-gray-300 mb-4">
+            <p className="text-xs leading-relaxed text-gray-300 mb-4">
             EaseMilker is an automated smart milking system that ensures
             hygienic, efficient, and stress-free milking for cows.
-          </p>
-          <div className="flex items-center gap-4">
+            </p>
+          <div className="flex items-center gap-4 text-lg space-x-4">
             <a href="#" className="hover:text-[#8dc201]">
               <i className="fab fa-facebook-f"></i>
             </a>
@@ -34,20 +34,20 @@ export const Footer = (): JSX.Element => {
 
         {/* ---------- Column 2: Quick Links ---------- */}
         <div>
-          <h3 className="font-semibold mb-3">Quick Links</h3>
-          <ul className="space-y-1 text-sm text-gray-300">
+            <h3 className="font-semibold mb-3 text-lg">Quick Links</h3>
+            <ul className="space-y-1 text-xs text-gray-300">
             <li><a href="#" className="hover:text-[#8dc201]">Home</a></li>
             <li><a href="#" className="hover:text-[#8dc201]">Shop</a></li>
             <li><a href="#" className="hover:text-[#8dc201]">Mobile App</a></li>
             <li><a href="#" className="hover:text-[#8dc201]">Review</a></li>
             <li><a href="#" className="hover:text-[#8dc201]">Helpline</a></li>
-          </ul>
+            </ul>
         </div>
 
         {/* ---------- Column 3: Products ---------- */}
         <div>
-          <h3 className="font-semibold mb-3">Products</h3>
-          <ul className="space-y-1 text-sm text-gray-300">
+          <h3 className="font-semibold mb-3 text-lg">Products</h3>
+          <ul className="space-y-1 text-xs text-gray-300">
             <li>Basic Package</li>
             <li>Milk Testing Package</li>
             <li>STM32 Controller</li>
@@ -57,8 +57,8 @@ export const Footer = (): JSX.Element => {
 
         {/* ---------- Column 4: Contact Info ---------- */}
         <div>
-          <h3 className="font-semibold mb-3">Contact Info</h3>
-          <ul className="space-y-2 text-sm text-gray-300">
+          <h3 className="font-semibold mb-3 text-lg">Contact Info</h3>
+          <ul className="space-y-2 text-xs text-gray-300">
             <li className="flex items-center gap-2">
               <Phone size={14} className="text-[#8dc201]" />
               <span>+91 9789889776</span>
