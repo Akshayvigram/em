@@ -47,8 +47,8 @@ export const Layout = (): JSX.Element => {
                 key={index}
                 to={item.path}
                 className={`[font-family:'Mochiy_Pop_P_One',Helvetica] font-normal ${
-                  location.pathname === item.path ? item.color : "text-[#092944]"
-                } text-[12.4px] tracking-[0] leading-[normal] hover:opacity-80 transition-opacity`}
+                  location.pathname === item.path ? "text-[#8dc201]" : "text-[#092944]"
+                } text-[12.4px] tracking-[0] leading-[normal] hover:scale-110 transition-all duration-300 ease-in-out`}
               >
                 {item.label}
               </Link>

@@ -1,20 +1,7 @@
-import React from "react";
 import { Button } from "../../components/ui/button";
 import { Card, CardContent } from "../../components/ui/card";
 import { Footer } from "../../components/footer";
 import { Link } from 'react-router-dom';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-// ------------------------------------
-// NAVIGATION + HERO SECTION
-// ------------------------------------
-const navigationItems = [
-  { label: "HOME", href: "/" },
-  { label: "SHOP", href: "/shop" },
-  { label: "MOBILE APP", href: "/mobile-app" },
-  { label: "REVIEWS", href: "/reviews" },
-  { label: "CONTACT", href: "/contact" }, // Updated to match route
-];
 
 const productImages = [
   { src: "/image-37.png", alt: "Image", className: "absolute top-[183px] left-0 w-[125px] h-[136px]" },
@@ -84,6 +71,58 @@ const appImages = [
 // MAIN HOME COMPONENT
 // ------------------------------------
 export const Home = (): JSX.Element => {
+  const scrollToProduct = () => {
+    const element = document.getElementById('product-section');
+    if (element) {
+      const headerOffset = -120;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const scrollToFeatures = () => {
+    const element = document.getElementById('features-section');
+    if (element) {
+      const headerOffset = -120;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const scrollToWorking = () => {
+    const element = document.getElementById('working-section');
+    if (element) {
+      const headerOffset = -90;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const scrollToApp = () => {
+    const element = document.getElementById('app-section');
+    if (element) {
+      const headerOffset = 120;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <main className="w-full overflow-hidden">
       {/* ------------------ HERO SECTION ------------------ */}
@@ -117,17 +156,34 @@ export const Home = (): JSX.Element => {
           </CardContent>
         </Card>
         <div className="absolute top-[650px] left-[489px] flex gap-[98px]">
-          {featureIcons.map((icon, i) => (
-            <button key={i} className="flex flex-col items-center gap-[11.3px] hover:opacity-80">
-              <img className="w-[45.19px] h-[45.19px] object-cover" alt={icon.alt} src={icon.src} />
-              <span className="text-[#999999] text-[9.8px]">{icon.label}</span>
-            </button>
-          ))}
+          {featureIcons.map((icon, i) => {
+            let handleClick;
+            if (icon.label === 'Product') {
+              handleClick = scrollToProduct;
+            } else if (icon.label === 'Features') {
+              handleClick = scrollToFeatures;
+            } else if (icon.label === 'Working') {
+              handleClick = scrollToWorking;
+            } else if (icon.label === 'App') {
+              handleClick = scrollToApp;
+            }
+
+            return (
+              <button 
+                key={i} 
+                onClick={handleClick}
+                className="flex flex-col items-center gap-[11.3px] hover:opacity-80 hover:scale-110 transition-all duration-300 cursor-pointer"
+              >
+                <img className="w-[45.19px] h-[45.19px] object-cover" alt={icon.alt} src={icon.src} />
+                <span className="text-[#999999] text-[9.8px]">{icon.label}</span>
+              </button>
+            );
+          })}
         </div>
       </section>
 
       {/* ------------------ MAIN CONTENT SECTION ------------------ */}
-      <section className="relative w-full bg-[#d6e6f4] py-16">
+      <section id="product-section" className="relative w-full bg-[#d6e6f4] py-16">
         <div className="relative w-full h-[820px]">
           <img className="absolute top-0 left-[169px] w-[1271px] h-[820px]" alt="Group" src="/group-81.png" />
           <img className="absolute top-[265px] left-[806px] w-[473px] h-[368px]" alt="Group" src="/group-62.png" />
@@ -155,7 +211,7 @@ export const Home = (): JSX.Element => {
       </section>
 
       {/* ------------------ FEATURES SECTION ------------------ */}
-      <section className="relative w-full py-[137px] bg-gradient-to-b from-white to-[#d3e3f1]">
+      <section id="features-section" className="relative w-full py-[137px] bg-gradient-to-b from-white to-[#d3e3f1]">
         <div className="container mx-auto px-4">
           <h2 className="text-center mb-[122px]">
             <span className="underline text-xl">Main Features of Ease Milker</span>
@@ -181,7 +237,7 @@ export const Home = (): JSX.Element => {
             ))}
           </div>
         </div>
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mt-12">
+        <div id="app-section" className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mt-12">
           <div className="relative flex justify-center items-center">
             <img
               className="w-full max-w-[455px] h-auto object-cover relative z-10"
@@ -204,7 +260,7 @@ export const Home = (): JSX.Element => {
       </section>
 
       {/* ------------------ HOW IT WORKS SECTION ------------------ */}
-      <section className="relative w-full bg-white py-20 px-6">
+      <section id="working-section" className="relative w-full bg-white py-20 px-6">
         <div className="max-w-6xl mx-auto text-left">
           <h2 className="text-[#032a4a] text-2xl font-semibold underline underline-offset-4 mb-12">
             HOW IT WORKS
