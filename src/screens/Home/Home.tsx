@@ -221,7 +221,7 @@ export const Home = (): JSX.Element => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-[1268px] mx-auto">
             {features.map((feature, i) => (
               <div key={i} className="flex flex-col items-center">
-                <img className="w-[75px] h-[51px] mb-[1px]" alt="Arrow top" src="/polygon-70.svg" />
+                <img className="w-[75px] h-[51px] mb-0 ml-[155px]" alt="Arrow top" src="/polygon-70.svg" />
                 <Card
                   className={`${feature.bgColor} rounded-[44.4px_0px_0px_44.4px] shadow-md border-0 w-full max-w-[232px] h-[360px]`}
                 >
@@ -232,12 +232,14 @@ export const Home = (): JSX.Element => {
                     </p>
                   </CardContent>
                 </Card>
-                <img className="w-[75px] h-[51px] mt-[1px]" alt="Arrow bottom" src="/polygon-79.svg" />
+                <img className="w-[75px] h-[51px] mb-0 ml-[155px]" alt="Arrow bottom" src="/polygon-79.svg" />
               </div>
             ))}
           </div>
         </div>
-        <div id="app-section" className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mt-12">
+        <br />
+        {/* ------------------ MOBILE APP SECTION ------------------ */}
+      <div id="app-section" className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mt-12 pt-12">
           <div className="relative flex justify-center items-center">
             <img
               className="w-full max-w-[455px] h-auto object-cover relative z-10"
