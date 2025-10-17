@@ -184,9 +184,9 @@ export const Home = (): JSX.Element => {
 
       {/* ------------------ MAIN CONTENT SECTION ------------------ */}
       <section id="product-section" className="relative w-full bg-[#d6e6f4] py-16">
-        <div className="relative w-full h-[820px]">
-          <img className="absolute top-0 left-[169px] w-[1271px] h-[820px]" alt="Group" src="/group-81.png" />
-          <img className="absolute top-[265px] left-[806px] w-[473px] h-[368px]" alt="Group" src="/group-62.png" />
+        <img  className="absolute top-[100px] left-0 w-full h-full object-cover" alt="Group" src="/group-81.jpg"/>
+        <div className="relative w-full h-[700px]">
+          <img className="absolute top-[265px] left-[850px] w-[473px] h-[368px]" alt="Group" src="/group-62.png" />
           <div className="absolute top-[211px] left-[179px] w-[595px] text-[25px] text-justify">
             <span className="text-[#8dc201]">Easemilker</span>
             <span className="text-[#032a4a]">
