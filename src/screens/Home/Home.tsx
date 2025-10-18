@@ -100,7 +100,7 @@ export const Home = (): JSX.Element => {
   const scrollToWorking = () => {
     const element = document.getElementById('working-section');
     if (element) {
-      const headerOffset = -90;
+      const headerOffset = -70;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
       window.scrollTo({
@@ -169,8 +169,8 @@ export const Home = (): JSX.Element => {
             }
 
             return (
-              <button 
-                key={i} 
+              <button
+                key={i}
                 onClick={handleClick}
                 className="flex flex-col items-center gap-[11.3px] hover:opacity-80 hover:scale-110 transition-all duration-300 cursor-pointer"
               >
@@ -184,7 +184,7 @@ export const Home = (): JSX.Element => {
 
       {/* ------------------ MAIN CONTENT SECTION ------------------ */}
       <section id="product-section" className="relative w-full bg-[#d6e6f4] py-16">
-        <img  className="absolute top-[100px] left-0 w-full h-full object-cover" alt="Group" src="/group-81.jpg"/>
+        <img className="absolute top-[100px] left-0 w-full h-full object-cover" alt="Group" src="/group-81.jpg" />
         <div className="relative w-full h-[700px]">
           <img className="absolute top-[265px] left-[850px] w-[473px] h-[368px]" alt="Group" src="/group-62.png" />
           <div className="absolute top-[211px] left-[179px] w-[595px] text-[25px] text-justify">
@@ -239,7 +239,7 @@ export const Home = (): JSX.Element => {
         </div>
         <br />
         {/* ------------------ MOBILE APP SECTION ------------------ */}
-      <div id="app-section" className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mt-12 pt-12">
+        <div id="app-section" className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mt-12 pt-12">
           <div className="relative flex justify-center items-center">
             <img
               className="w-full max-w-[455px] h-auto object-cover relative z-10"
@@ -261,42 +261,76 @@ export const Home = (): JSX.Element => {
         </div>
       </section>
 
-      {/* ------------------ HOW IT WORKS SECTION ------------------ */}
+{/* ------------------ HOW IT WORKS SECTION ------------------ */}
       <section id="working-section" className="relative w-full bg-white py-20 px-6">
-        <div className="max-w-6xl mx-auto text-left">
-          <h2 className="text-[#032a4a] text-2xl font-semibold underline underline-offset-4 mb-12">
+        <div className="max-w-[1200px] mx-auto">
+          <h2 className="text-[#032a4a] font-semibold text-[25px] tracking-wide underline underline-offset-4 mb-8 text-left mx-11">
             HOW IT WORKS
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 mb-10">
+
+          <div className="flex gap-[12px] mb-8 items-start justify-center">
+            {/* Left big image */}
             {appImages.length > 0 && (
-              <div className="w-full h-full">
+              <div className="flex-shrink-0 w-[410px] h-[410px] rounded-[10px] shadow-md overflow-hidden bg-gray-100">
                 <img
                   src={appImages[0].src}
                   alt={appImages[0].alt}
-                  className="w-full h-full object-cover rounded-lg shadow-md"
+                  className="w-full h-full object-cover"
                 />
               </div>
             )}
-            <div className="grid grid-cols-2 grid-rows-2 gap-4 lg:gap-6">
-              {appImages.slice(1, 5).map((img, i) => (
-                <div key={i} className="w-full h-full">
-                  <img
-                    src={img.src}
-                    alt={img.alt}
-                    className="w-full h-full object-cover rounded-lg shadow-md"
-                  />
-                </div>
-              ))}
+
+            {/* Right images - 2 rows with variable widths */}
+            <div className="flex flex-col gap-[12px]">
+              {/* First row - 2 images */}
+              <div className="flex gap-[12px]">
+                {appImages.slice(1, 3).map((img, i) => {
+                  const widths = ["w-[310px]", "w-[368px]"];
+                  return (
+                    <div
+                      key={i}
+                      className={`${widths[i]} h-[199px] rounded-[10px] shadow-md overflow-hidden bg-gray-100 flex-shrink-0`}
+                    >
+                      <img
+                        src={img.src}
+                        alt={img.alt}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+              
+              {/* Second row - 2 images */}
+              <div className="flex gap-[12px]">
+                {appImages.slice(3, 5).map((img, i) => {
+                  const widths = ["w-[455px]", "w-[223px]"];
+                  return (
+                    <div
+                      key={i}
+                      className={`${widths[i]} h-[199px] rounded-[10px] shadow-md overflow-hidden bg-gray-100 flex-shrink-0`}
+                    >
+                      <img
+                        src={img.src}
+                        alt={img.alt}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
-          <p className="max-w-3xl mx-auto text-[#5c5a57] text-[14px] leading-relaxed mb-6 text-center" >
-            The system operates efficiently with controlled suction and pulsation to maintain comfort and milk quality, automatically stopping once milking is complete to prevent over-milking.
-          </p>
+
+            <p className="max-w-[900px] mt-11 mx-auto text-[#898681] text-[12px] leading-relaxed mb-6 text-center">
+              THE SYSTEM OPERATES EFFICIENTLY WITH CONTROLLED SUCTION AND PULSATION TO MAINTAIN COMFORT AND MILK QUALITY, AUTOMATICALLY STOPPING ONCE MILKING IS COMPLETE TO PREVENT OVER-MILKING.
+            </p>
           <p className="text-[#032a4a] font-semibold text-lg tracking-wide text-center">
             EASE MILKER
           </p>
         </div>
       </section>
+
       <Footer />
     </main>
   );

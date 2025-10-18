@@ -2,14 +2,14 @@ import React from "react";
 import { Card, CardContent } from "../../components/ui/card";
 
 const features = [
-  "Live Milking Status",
-  "Milk Yield Analytics",
-  "Smart Alerts & Notifications",
-  "Cleaning & Maintenance Tracker",
-  "Data Storage & Cloud Sync",
-  "Animal Health Insights",
-  "Device Control & Settings",
-  "Multi-Language Support",
+  "• Live Milking Status",
+  "• Milk Yield Analytics",
+  "• Smart Alerts & Notifications",
+  "• Cleaning & Maintenance Tracker",
+  "• Data Storage & Cloud Sync",
+  "• Animal Health Insights",
+  "• Device Control & Settings",
+  "• Multi-Language Support",
 ];
 
 export const MobileApp = (): JSX.Element => {
@@ -44,9 +44,9 @@ export const MobileApp = (): JSX.Element => {
               FEATURE:
             </h2>
 
-            <ul className="[font-family:'Inter',Helvetica] font-semibold text-[#4e4d4d] text-[15px] tracking-[0] leading-[normal] space-y-[3px] mb-[47px]">
+            <ul className="[font-family:'Inter',Helvetica] font-semibold text-[#4e4d4d] text-[15px] tracking-[0] leading-[normal] space-y-[3px] mb-[47px] mt-[-20px]">
               {features.map((feature, index) => (
-                <li key={index}>{feature}</li>
+              <li key={index}>{feature}</li>
               ))}
             </ul>
 
