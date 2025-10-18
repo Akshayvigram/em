@@ -1,20 +1,18 @@
 import { PackageIcon } from "lucide-react";
-import React, { useState } from "react";
 import { Button } from "../../components/ui/button";
 import { Card, CardContent } from "../../components/ui/card";
 import { Input } from "../../components/ui/input";
 import { Link } from 'react-router-dom';
 
-const navigationItems = [
-  { label: "HOME", active: false },
-  { label: "SHOP", active: true },
-  { label: "MOBILE APP", active: false },
-  { label: "REVIEWS", active: false },
-  { label: "CONTACT", active: false },
-];
+// const navigationItems = [
+//   { label: "HOME", active: false },
+//   { label: "SHOP", active: true },
+//   { label: "MOBILE APP", active: false },
+//   { label: "REVIEWS", active: false },
+//   { label: "CONTACT", active: false },
+// ];
 
 const thumbnailImages = ["/frame-268.svg", "/frame-269.svg", "/frame-270.svg"];
-
 const productHighlights = [
   {
     emoji: "💧",
@@ -52,7 +50,7 @@ const productHighlights = [
 ];
 
 export const Shop = (): JSX.Element => {
-  const [quantity, setQuantity] = useState(1);
+  // const [quantity, setQuantity] = useState(1);
 
   return (
     <div className="bg-white min-h-screen w-full">
@@ -68,7 +66,7 @@ export const Shop = (): JSX.Element => {
           </div>
 
           <div className="flex gap-[30px]">
-            {thumbnailImages.map((src, index) => (
+            {thumbnailImages.map((_src, index) => (
               <button
                 key={index}
                 className="w-[133px] h-[133px] border-2 border-transparent hover:border-[#8dc201] rounded-md transition-colors"
