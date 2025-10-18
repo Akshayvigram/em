@@ -15,7 +15,7 @@ export const Layout = (): JSX.Element => {
 
   return (
     <div className="bg-[#ddefff] w-full min-w-[1440px] min-h-screen flex flex-col">
-      <header className="w-full h-[120px] bg-white shadow-[0px_4px_4px_#00000040]">
+      <header className="w-full h-[120px] bg-white shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.2),0px_2px_4px_-1px_rgba(0,0,0,0.12)] relative z-10">
         <div className="max-w-[1440px] mx-auto h-full flex items-center justify-between px-[calc(50%-513px)]">
           <Link to="/" className="relative w-44 h-[55px]">
             <div className="absolute top-0 left-[34px] w-[140px] [font-family:'Mochiy_Pop_P_One',Helvetica] font-normal text-[#012e43] text-[13.5px] tracking-[0] leading-[13.5px]">
