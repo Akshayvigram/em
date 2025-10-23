@@ -12,9 +12,9 @@ const ContactDetailItem = ({ icon, title, content }: { icon: JSX.Element, title:
   <div className="py-4 space-y-1">
     <div className="flex items-center space-x-2 text-gray-300">
       {icon}
-      <h3 className="text-sm font-semibold">{title}</h3>
+      <h3 className="text-xs font-semibold">{title}</h3>
     </div>
-    <p className="text-white text-base pl-7">{content}</p>
+    <p className="text-white text-xs pl-7">{content}</p>
   </div>
 );
 
@@ -51,43 +51,49 @@ export const Contact = (): JSX.Element => {
   };
 
   // --- Header JSX (Reverted to original look + added sticky behavior) ---
- 
+
   // --- End Header JSX ---
 
   return (
     <>
-      
-      
+
+
       {/* Outer container matching the light blue background of the image */}
       {/* Added pt-[120px] for header clearance */}
-      <div className="min-h-screen bg-[#F0F8FF] pt-[120px] pb-20 flex justify-center">
-        
+      <div className="min-h-screen">
+
         {/* Main Card Container (The illusion is created here) */}
         {/* The overall shadow and rounded corner is applied to a containing div */}
-        <div className="max-w-6xl w-full flex shadow-xl rounded-[20px] overflow-hidden"> 
+        <div className="max-w-2xl w-full flex shadow-xl rounded-[20px] overflow-hidden">
 
           {/* LEFT SIDE: Contact Form (White Box) */}
           {/* Adjusted to w-3/5 (60%) for the size difference */}
-          <div 
-            className="w-[60%] bg-white p-12"
+          <div
+            className="w-[1111px] h-[544px] bg-[rgba(255,255,255,1)] p-10 flex flex-col"
             // Custom border radius to keep left corners rounded, and square on the right side
-            style={{ borderRadius: '30px 0 0 20px' }} 
+            style={{
+              borderRadius: '10px',
+              top: '216px',
+              left: '112px',
+              position: 'absolute',
+              boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.25)'
+            }}
           >
-            
+
             {/* Form Header */}
-            <h2 className="text-2xl font-bold text-gray-800 mb-2">
+            <h2 className="text-2xl font-Mochiy Pop P One" style={{ color: 'rgba(4, 42, 75, 1)' }}>
               Send us a message
             </h2>
-            <p className="text-sm text-gray-500 mb-10 max-w-md">
+            <p className="mb-10 mt-3 max-w-[618px] size-15" style={{ color: 'rgba(153, 153, 153, 1)' }}>
               Do you have a question? A complaint? Or need any help to choose the right product from Zalomi. Feel free to contact us
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-6">
-              
+
               {/* Row 1: First Name / Last Name */}
               <div className="flex space-x-6">
-                <div className="w-1/2">
-                  <label htmlFor="firstName" className="text-sm font-normal text-gray-700 block mb-1">
+                <div className="w-[380px]">
+                  <label htmlFor="firstName" className="text-xs font-normal text-gray-700 block mb-2 ml-2">
                     First Name
                   </label>
                   <input
@@ -96,13 +102,13 @@ export const Contact = (): JSX.Element => {
                     name="firstName"
                     value={formData.firstName}
                     onChange={handleChange}
-                    className="w-full h-10 px-3 border border-gray-300 rounded focus:ring-blue-500 focus:border-blue-500 text-sm"
+                    className="w-[280px] ml-2 h-10 px-3 border border-gray-300 rounded-[8px] focus:ring-blue-500 focus:border-blue-500 text-xs"
                     placeholder="Enter Your First Name"
                     required
                   />
                 </div>
                 <div className="w-1/2">
-                  <label htmlFor="lastName" className="text-sm font-normal text-gray-700 block mb-1">
+                  <label htmlFor="lastName" className="text-xs font-normal text-gray-700 block mb-2 ">
                     Last Name
                   </label>
                   <input
@@ -111,7 +117,7 @@ export const Contact = (): JSX.Element => {
                     name="lastName"
                     value={formData.lastName}
                     onChange={handleChange}
-                    className="w-full h-10 px-3 border border-gray-300 rounded focus:ring-blue-500 focus:border-blue-500 text-sm"
+                    className="w-[280px] h-10 px-3 border border-gray-300 rounded-[8px] focus:ring-blue-500 focus:border-blue-500 text-xs"
                     placeholder="Enter Your Last Name"
                   />
                 </div>
@@ -119,8 +125,8 @@ export const Contact = (): JSX.Element => {
 
               {/* Row 2: Email / Contact Details */}
               <div className="flex space-x-6">
-                <div className="w-1/2">
-                  <label htmlFor="email" className="text-sm font-normal text-gray-700 block mb-1">
+                <div className="w-[380px]">
+                  <label htmlFor="email" className="text-xs font-normal text-gray-700 block mb-2 ml-2">
                     Email
                   </label>
                   <input
@@ -129,26 +135,43 @@ export const Contact = (): JSX.Element => {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full h-10 px-3 border border-gray-300 rounded focus:ring-blue-500 focus:border-blue-500 text-sm"
+                    className="w-[280px] ml-2 h-10 px-3 border border-gray-300 rounded-[8px] focus:ring-blue-500 focus:border-blue-500 text-xs"
                     placeholder="Enter Your Mail.ID"
                     required
                   />
                 </div>
                 <div className="w-1/2">
-                  <label htmlFor="phoneNumber" className="text-sm font-normal text-gray-700 block mb-1">
+                  <label
+                    htmlFor="phoneNumber"
+                    className="text-xs font-normal text-gray-800 block mb-2"
+                  >
                     Contact Details
                   </label>
-                  <div className="flex space-x-1">
+
+                  <div className="flex items-center border border-gray-300 rounded-[8px] overflow-hidden w-[280px]">
                     {/* Country Code Dropdown */}
-                    <select
-                      name="countryCode"
-                      value={formData.countryCode}
-                      onChange={handleChange}
-                      className="h-10 border border-gray-300 rounded text-sm focus:ring-blue-500 focus:border-blue-500 pr-0"
-                    >
-                      <option value="+91">+91</option>
-                      <option value="+1">+1</option>
-                    </select>
+                    <div className="flex items-center pl-3 pr-1">
+                      <select
+                        name="countryCode"
+                        value={formData.countryCode}
+                        onChange={handleChange}
+                        className="h-10 bg-white text-xs text-gray-700 font-medium focus:outline-none cursor-pointer pr-5 appearance-none"
+                        style={{
+                          backgroundImage:
+                            "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6'><path fill='gray' d='M0 0l5 6 5-6z'/></svg>\")",
+                          backgroundRepeat: "no-repeat",
+                          backgroundPosition: "right 4px center",
+                          backgroundSize: "8px 5px",
+                        }}
+                      >
+                        <option value="+91">+91</option>
+                        <option value="+1">+1</option>
+                      </select>
+
+                      {/* Thin centered divider line */}
+                      <div className="h-10 w-px bg-gray-300 ml-1"></div>
+                    </div>
+
                     {/* Phone Number Input */}
                     <input
                       type="tel"
@@ -156,16 +179,19 @@ export const Contact = (): JSX.Element => {
                       name="phoneNumber"
                       value={formData.phoneNumber}
                       onChange={handleChange}
-                      className="w-full h-10 px-3 border border-gray-300 rounded focus:ring-blue-500 focus:border-blue-500 text-sm"
                       placeholder="Enter Your Mobile Number"
+                      className="flex-1 h-10 px-3 text-xs text-gray-700 placeholder-gray-400 focus:outline-none font-normal"
                     />
                   </div>
                 </div>
+
+
+
               </div>
 
               {/* Row 3: Message */}
               <div>
-                <label htmlFor="message" className="text-sm font-normal text-gray-700 block mb-1">
+                <label htmlFor="message" className="text-xs font-normal text-gray-700 block mb-2">
                   Message
                 </label>
                 <textarea
@@ -174,74 +200,99 @@ export const Contact = (): JSX.Element => {
                   value={formData.message}
                   onChange={handleChange}
                   rows={4}
-                  className="w-full px-3 py-2 border border-gray-300 rounded focus:ring-blue-500 focus:border-blue-500 text-sm resize-none"
+                  className="w-[700px] px-3 py-2 border border-gray-300 rounded-[8px] focus:ring-blue-500 focus:border-blue-500 text-xs resize-none"
                   placeholder="Enter Your Message"
                   required
                 />
               </div>
 
               {/* Submit Button */}
-              <div className="pt-4 text-right">
+              <div className="flex">
                 <Button
                   type="submit"
-                  className="bg-[#032a4a] hover:bg-[#043d67] text-white font-medium px-6 py-2 rounded transition-colors text-sm"
+                  className="bg-[rgba(4,42,75,1)] hover:bg-[#043d67] text-white font-medium rounded transition-colors text-xs ml-auto mr-[30%]"
+                  style={{
+                    width: '161px',
+                    height: '34px',
+                    borderRadius: '20px',
+                  }}
                 >
                   Send a message
                 </Button>
               </div>
+
             </form>
           </div>
 
           {/* RIGHT SIDE: Contact Details Sidebar (Dark Box) */}
           {/* Adjusted width to w-2/5 (40%) and custom rounded corner */}
-          <div 
-            className="w-[40%] bg-[#032a4a] text-white p-10 flex flex-col justify-between"
-            style={{ borderRadius: '0 20px 20px 0' }} // Apply the large radius to the dark box corners
+          <div
+            className=" w-[396px] h-[598px] bg-[rgba(4,42,75,1)] text-white p-10 flex flex-col justify-between"
+            style={{
+              borderRadius: '40px',
+              top: '186px',
+              left: '932px',
+              position: 'absolute',
+              boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.25)'
+            }}
           >
-            <div>
-              <h2 className="text-2xl font-bold mb-8">
+
+            <div className=" w-[257px] h-[58px] top-[61px] left-[38px] absolute">
+              <h2 className="text-[20px] font-Mochiy Pop P One mb-8">
                 Hi! we are Always here to help you
               </h2>
+            </div>
 
+            <div>
               {/* Contact Items */}
               {/* Uses divider and padding to create the horizontal lines seen in the image */}
-              <div className="divide-y divide-white/10"> 
-                <ContactDetailItem 
-                  icon={<IconPhone />} 
-                  title="Helpline" 
-                  content="+91 9874563210" 
-                />
-                <ContactDetailItem 
-                  icon={<IconMail />} 
-                  title="Email" 
-                  content="azhizensolutions@azhzen.com" 
-                />
-                <ContactDetailItem 
-                  icon={<IconSms />} 
-                  title="SMS/ What's app" 
-                  content="+91 9874563210" 
-                />
+              <div className="w-[320px]  h-[75px]  top-[159px]  left-[38px]  angle-0deg  opacity-1 border-radius-4px absolute">
+                <div className="bg-[#2c4a5e] rounded-lg p-4 flex items-start space-x-3">
+                  <IconPhone />
+                  <div>
+                    <h3 className=" w-[58px]  h-[17px]  top-[21px]  left-[74px]  angle-0 deg  opacity-1 text-xs Mochiy Pop P One text-white">Helpline</h3>
+                    <p className="text-white text-xs">+91 9874563210</p>
+                  </div>
+                </div>
+
+                <div className="bg-[#2c4a5e] rounded-lg p-4 flex items-start space-x-3 mt-4">
+                  <div className="text-white flex-shrink-0 justify-center items-center">
+                    <IconMail />
+                  </div>
+                  <div>
+                    <h3 className="text-xs font-semibold text-gray-300">Email</h3>
+                    <p className="text-white text-xs">azhizensolutions@azhzen.com</p>
+                  </div>
+                </div>
+
+                <div className="bg-[#2c4a5e] rounded-lg p-4 flex items-start space-x-3 mt-4">
+                  <IconSms />
+                  <div>
+                    <h3 className="text-xs font-semibold text-gray-300">SMS/ What's app</h3>
+                    <p className="text-white text-xs">+91 9874563210</p>
+                  </div>
+                </div>
               </div>
             </div>
 
             {/* Social Media Icons */}
             <div className="mt-10">
-              <h3 className="text-sm text-gray-400 mb-3">Follow us!</h3>
-              <div className="flex space-x-4 text-white">
+              <h3 className="text-sm bg-[rgba(255, 255, 255, 1)] mb-3">Follow us!</h3>
+              <div className="flex justify-between text-white">
                 {/* Social icons (use font or SVG icons for production) */}
-                <a href="#" className="hover:text-gray-400 transition-colors">
+                <a href="#" className="bg-[rgba(255, 255, 255, 1)] transition-colors flex items-center justify-center w-8">
                   <span className="text-xl">f</span>
                 </a>
-                <a href="#" className="hover:text-gray-400 transition-colors">
+                <a href="#" className="bg-[rgba(255, 255, 255, 1)] hover:text-gray-400 transition-colors flex items-center justify-center w-8">
                   <span className="text-xl">in</span>
                 </a>
-                <a href="#" className="hover:text-gray-400 transition-colors">
+                <a href="#" className="bg-[rgba(255, 255, 255, 1)] hover:text-gray-400 transition-colors flex items-center justify-center w-8">
                   <span className="text-xl">t</span>
                 </a>
-                <a href="#" className="hover:text-gray-400 transition-colors">
+                <a href="#" className="bg-[rgba(255, 255, 255, 1)] hover:text-gray-400 transition-colors flex items-center justify-center w-8">
                   <span className="text-xl">wa</span>
                 </a>
-                <a href="#" className="hover:text-gray-400 transition-colors">
+                <a href="#" className="bg-[rgba(255, 255, 255, 1)] hover:text-gray-400 transition-colors flex items-center justify-center w-8">
                   <span className="text-xl">X</span>
                 </a>
               </div>
@@ -252,3 +303,4 @@ export const Contact = (): JSX.Element => {
     </>
   );
 };
+
