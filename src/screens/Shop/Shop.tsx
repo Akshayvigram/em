@@ -1,4 +1,3 @@
-import { PackageIcon } from "lucide-react";
 import { Button } from "../../components/ui/button";
 import { Card, CardContent } from "../../components/ui/card";
 import { Input } from "../../components/ui/input";
@@ -105,7 +104,7 @@ export const Shop = (): JSX.Element => {
           <Card className="w-[425px] bg-[#cae5fd] rounded-[14px] border border-solid border-[#0a4bd5] mb-[43px]">
             <CardContent className="p-5">
               <div className="flex gap-3">
-                <PackageIcon className="w-6 h-6 flex-shrink-0 text-black" />
+                <img src="/box.png" alt="Package" className="w-6 h-6 flex-shrink-0 text-black" />
                 <p className="[font-family:'Inter',Helvetica] font-normal text-black text-[15px] tracking-[0] leading-[25px]">
                   Azhizen offers{" "}
                   <span className="font-bold">free delivery</span> across India,
