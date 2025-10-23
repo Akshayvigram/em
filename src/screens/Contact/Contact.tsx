@@ -46,7 +46,7 @@ export const Contact = (): JSX.Element => {
             <h2 className="text-2xl font-Mochiy Pop P One" style={{ color: "rgba(4, 42, 75, 1)" }}>
               Send us a message
             </h2>
-            <p className="mb-10 mt-3 max-w-[618px] size-15" style={{ color: "rgba(153, 153, 153, 1)" }}>
+            <p className="mb-10 mt-3 max-w-[650px] size-15" style={{ color: "rgba(153, 153, 153, 1)" }}>
               Do you have a question? A complaint? Or need any help to choose the right product from Zalomi. Feel free to contact us
             </p>
 
@@ -141,7 +141,7 @@ export const Contact = (): JSX.Element => {
 
               {/* Row 3: Message */}
               <div>
-                <label htmlFor="message" className="text-xs font-normal text-gray-700 block mb-2">
+                <label htmlFor="message" className="text-xs font-normal text-gray-700 block mb-2 ml-2">
                   Message
                 </label>
                 <textarea
@@ -150,7 +150,7 @@ export const Contact = (): JSX.Element => {
                   value={formData.message}
                   onChange={handleChange}
                   rows={4}
-                  className="w-[700px] px-3 py-2 border border-gray-300 rounded-[8px] focus:ring-blue-500 focus:border-blue-500 text-xs resize-none"
+                  className="w-[700px] ml-2 px-3 py-2 border border-gray-300 rounded-[8px] focus:ring-blue-500 focus:border-blue-500 text-xs resize-none"
                   placeholder="Enter Your Message"
                   required
                 />
