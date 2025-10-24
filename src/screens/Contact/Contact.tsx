@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "../../components/ui/button";
+import { Footer } from "../../components/footer";
 
 // --- Contact Icons ---
 const IconPhone = () => <img src="/helpline.png" className="w-6 h-6 mt-1" alt="Phone Icon" />;
@@ -30,7 +31,7 @@ export const Contact = (): JSX.Element => {
 
   return (
     <>
-      <div className="min-h-screen">
+      <div className="min-h-screen mb-[120px]">
         <div className="max-w-2xl w-full flex shadow-xl rounded-[20px] overflow-hidden">
           {/* LEFT SIDE: Contact Form */}
           <div
@@ -243,6 +244,8 @@ export const Contact = (): JSX.Element => {
           </div>
         </div>
       </div>
+      
+      <Footer />
     </>
   );
 };

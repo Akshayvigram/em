@@ -1,4 +1,5 @@
 import { Card, CardContent } from "../../components/ui/card";
+import { Footer } from "../../components/footer";
 
 const features = [
   "• Live Milking Status",
@@ -13,6 +14,7 @@ const features = [
 
 export const MobileApp = (): JSX.Element => {
   return (
+    <>
     <div className="flex items-start justify-center pt-[83px] pb-20">
       <Card className="w-[1110px] h-[650px] bg-white rounded-[10px] shadow-[0px_4px_4px_#00000040] overflow-hidden">
         <CardContent className="p-0 h-full flex">
@@ -71,5 +73,8 @@ export const MobileApp = (): JSX.Element => {
         </CardContent>
       </Card>
     </div>
+    
+    <Footer />
+    </>
   );
 };

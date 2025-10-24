@@ -2,6 +2,7 @@ import { Button } from "../../components/ui/button";
 import { Card, CardContent } from "../../components/ui/card";
 import { Input } from "../../components/ui/input";
 import { Link } from 'react-router-dom';
+import { Footer } from "../../components/footer";
 
 // const navigationItems = [
 //   { label: "HOME", active: false },
@@ -159,6 +160,8 @@ export const Shop = (): JSX.Element => {
           </Link>
         </section>
       </main>
+      
+      <Footer />
     </div>
   );
 };

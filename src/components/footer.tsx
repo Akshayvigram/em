@@ -79,7 +79,7 @@ export const Footer = (): JSX.Element => {
       </div>
 
       {/* ---------- Divider ---------- */}
-      <div className="border-t border-gray-700 mt-12 pt-4 text-center text-xs text-gray-400">
+      <div className="border-t border-gray-700 mt-12 pt-6 text-center text-xs text-gray-400 -mx-6">
         © EaseMilker Copy Rights
       </div>
     </footer>

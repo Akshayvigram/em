@@ -1,4 +1,5 @@
 import { Card, CardContent } from "../../components/ui/card";
+import { Footer } from "../../components/footer";
 
 // Star rating component for reusability
 type StarRatingProps = {
@@ -33,6 +34,7 @@ const Reviews = (): JSX.Element => {
     const averageRating = 4.0;
 
     return (
+        <>
         <div className="bg-[#f0f4f7] py-20 px-4 sm:px-6 lg:px-8">
             <div className="max-w-5xl mx-auto">
                 {/* --- Average Rating Section --- */}
@@ -72,6 +74,9 @@ const Reviews = (): JSX.Element => {
                 </div>
             </div>
         </div>
+        
+        <Footer />
+        </>
     );
 };
 
