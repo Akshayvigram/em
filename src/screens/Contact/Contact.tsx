@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "../../components/ui/button";
 import { Footer } from "../../components/footer";
+import { submitContactForm, ContactFormData } from "../../firebase/contactApi";
 
 // --- Contact Icons ---
 const IconPhone = () => <img src="/helpline.png" className="w-6 h-6 mt-1" alt="Phone Icon" />;
@@ -17,9 +18,48 @@ export const Contact = (): JSX.Element => {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'success' | 'error' | null;
+    message: string;
+  }>({ type: null, message: '' });
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: '' });
+
+    try {
+      const result = await submitContactForm(formData as ContactFormData);
+      
+      if (result.success) {
+        setSubmitStatus({
+          type: 'success',
+          message: result.message
+        });
+        // Reset form after successful submission
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          countryCode: "+91",
+          phoneNumber: "",
+          message: "",
+        });
+      } else {
+        setSubmitStatus({
+          type: 'error',
+          message: result.message
+        });
+      }
+    } catch (error) {
+      setSubmitStatus({
+        type: 'error',
+        message: 'An unexpected error occurred. Please try again.'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -31,17 +71,38 @@ export const Contact = (): JSX.Element => {
 
   return (
     <>
-      <div className="min-h-screen mb-[120px]">
+      <div className="min-h-screen mb-[120px] ">
+        {/* Status Message - Above both cards */}
+        {submitStatus.type && (
+          <div 
+            className={`mx-auto max-w-[1328px] mb-6 p-4 rounded-lg text-sm font-medium ${
+              submitStatus.type === 'success' 
+                ? 'bg-green-100 text-green-700 border border-green-300' 
+                : 'bg-red-100 text-red-700 border border-red-300'
+            }`}
+            style={{
+              position: "absolute",
+              top: "150px",
+              left: "112px",
+              right: "112px",
+              zIndex: 20,
+            }}
+          >
+            {submitStatus.message}
+          </div>
+        )}
+        
         <div className="max-w-2xl w-full flex shadow-xl rounded-[20px] overflow-hidden">
           {/* LEFT SIDE: Contact Form */}
           <div
             className="w-[1111px] h-[544px] bg-[rgba(255,255,255,1)] p-10 flex flex-col"
             style={{
               borderRadius: "10px",
-              top: "216px",
+              top: submitStatus.type ? "240px" : "216px",
               left: "112px",
               position: "absolute",
               boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+              transition: "top 0.3s ease",
             }}
           >
             <h2 className="text-2xl font-Mochiy Pop P One" style={{ color: "rgba(4, 42, 75, 1)" }}>
@@ -160,14 +221,15 @@ export const Contact = (): JSX.Element => {
               <div className="flex">
                 <Button
                   type="submit"
-                  className="bg-[rgba(4,42,75,1)] hover:bg-[#043d67] text-white font-medium rounded transition-colors text-xs ml-auto mr-[30%]"
+                  disabled={isSubmitting}
+                  className="bg-[rgba(4,42,75,1)] hover:bg-[#043d67] text-white font-medium rounded transition-colors text-xs ml-auto mr-[30%] disabled:opacity-50 disabled:cursor-not-allowed"
                   style={{
                     width: "161px",
                     height: "34px",
                     borderRadius: "20px",
                   }}
                 >
-                  Send a message
+                  {isSubmitting ? 'Sending...' : 'Send a message'}
                 </Button>
               </div>
             </form>
@@ -178,10 +240,11 @@ export const Contact = (): JSX.Element => {
             className="w-[396px] h-[598px] bg-[rgba(4,42,75,1)] text-white p-10 flex flex-col justify-between"
             style={{
               borderRadius: "40px",
-              top: "186px",
+              top: submitStatus.type ? "210px" : "186px",
               left: "932px",
               position: "absolute",
               boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+              transition: "top 0.3s ease",
             }}
           >
             <div className="w-[257px] h-[58px] top-[61px] left-[38px] absolute">
