@@ -7,7 +7,7 @@ export const Footer = (): JSX.Element => {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
         {/* ---------- Column 1: Logo & Description ---------- */}
         <div>
-          <h2 className="text-lg font-bold mb-3">EASEMILKER</h2>
+          <h2 className="text-lg font-bold text-[#8dc201] mb-3">EASEMILKER</h2>
             <p className="text-xs leading-relaxed text-gray-300 mb-4">
             EaseMilker is an automated smart milking system that ensures
             hygienic, efficient, and stress-free milking for cows.

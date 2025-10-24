@@ -33,7 +33,7 @@ export const MobileApp = (): JSX.Element => {
           </div>
 
           <div className="flex-1 pt-[50px] pl-[3px] pr-[64px]">
-            <h1 className="[font-family:'Mochiy_Pop_P_One',Helvetica] font-normal text-black text-xl tracking-[0] leading-[normal] mb-[17px]">
+            <h1 className="[font-family:'Mochiy_Pop_P_One',Helvetica] font-normal text-black text-xl tracking-[0] leading-[normal] mb-[5px]">
               EASE MILKER&nbsp;&nbsp;MOBILE APP
             </h1>
 
