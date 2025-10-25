@@ -214,7 +214,7 @@ export const Home = (): JSX.Element => {
       <section id="features-section" className="relative w-full py-[137px] bg-gradient-to-b from-white to-[#d3e3f1]">
         <div className="container mx-auto px-4">
           <h2 className="text-center mb-[122px]">
-            <span className="underline text-xl">Main Features of Ease Milker</span>
+            <span className="underline decoration-2 underline-offset-4 text-xl">Main Features of Ease Milker</span>
             <br />
             <span className="text-[25px]">that help you to understand</span>
           </h2>
