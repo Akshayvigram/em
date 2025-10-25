@@ -61,7 +61,7 @@ export const Shop = (): JSX.Element => {
             <img
               className="w-full h-full object-contain"
               alt="Ease Milker Product"
-              src="/group-62.png"
+              src="/Group 61.png"
             />
           </div>
 
@@ -74,7 +74,7 @@ export const Shop = (): JSX.Element => {
                 <img
                   className="w-full h-full object-contain"
                   alt="Ease Milker Product"
-                  src="/group-62.png"
+                  src="/Group 61.png"
                 />
               </button>
             ))}
