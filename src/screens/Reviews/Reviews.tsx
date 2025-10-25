@@ -40,7 +40,7 @@ const Reviews = (): JSX.Element => {
                     {/* --- Average Rating Section --- */}
                     <div className="flex items-center justify-center sm:justify-start gap-3 mb-8 -mt-11">
                         <p className="font-normal text-lg text-gray-800">
-                            Average rating: {averageRating.toFixed(1)}
+                            Average rating : {averageRating.toFixed(1)}
                         </p>
                         <StarRating rating={Math.round(averageRating)} />
                     </div>
