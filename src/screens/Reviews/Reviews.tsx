@@ -29,25 +29,37 @@ const featuredReview = {
     rating: 5,
 };
 
-// Renamed to be a regular const declaration
+// Component
 const Reviews = (): JSX.Element => {
     const averageRating = 4.0;
 
     return (
         <>
-        <div className="bg-[#f0f4f7] py-20 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-5xl mx-auto">
-                {/* --- Average Rating Section --- */}
-                <div className="flex items-center justify-center sm:justify-start gap-3 mb-4">
-                    <p className="font-semibold text-lg text-gray-800">
-                        Average rating: {averageRating.toFixed(1)}
-                    </p>
-                    <StarRating rating={Math.round(averageRating)} />
+            <div className="relative bg-white pt-20 pb-40 px-4 sm:px-6 lg:px-8 overflow-hidden">
+                <div className="max-w-5xl mx-auto">
+                    {/* --- Average Rating Section --- */}
+                    <div className="flex items-center justify-center sm:justify-start gap-3 mb-8 -mt-11">
+                        <p className="font-normal text-lg text-gray-800">
+                            Average rating: {averageRating.toFixed(1)}
+                        </p>
+                        <StarRating rating={Math.round(averageRating)} />
+                    </div>
+                </div>
+
+                {/* === Ellipse Behind Everything === */}
+                <div className="absolute left-1/2 top-[230px] -translate-x-1/2 -z-0 pointer-events-none opacity-70">
+                    <div
+                        className="w-[1588px] h-[730.35px] bg-[rgba(239,249,251,0.56)]
+                        rounded-[50%] shadow-[0_4px_10px_rgba(0,0,0,0.25)]
+                        blur-[0px] "
+                    ></div>
+
                 </div>
 
                 {/* --- Main Image & Testimonial Section --- */}
-                <div className="relative">
-                    <div className="w-full h-64 sm:h-80 lg:h-[500px] shadow-lg overflow-hidden">
+                <div className="relative flex flex-col items-center z-10">
+                    {/* Image */}
+                    <div className="w-[1521px] h-[558px]">
                         <img
                             src="/Frame 277.png.jpg"
                             alt="A herd of cows against a sunset sky"
@@ -55,30 +67,28 @@ const Reviews = (): JSX.Element => {
                         />
                     </div>
 
-                    <div className="relative px-4 sm:px-8 md:px-16 -mt-24 sm:-mt-20">
-                        <Card className="bg-white rounded-2xl shadow-2xl">
-                            <CardContent className="p-8 md:p-12 text-center">
-                                <h3 className="font-semibold text-gray-500 tracking-wide mb-4">
-                                    Farmer feedback
-                                </h3>
-                                <p className="text-xl md:text-2xl italic text-[#012e43] leading-relaxed">
-                                    "{featuredReview.text}"
-                                </p>
-                                <p className="mt-6 text-xl font-bold text-gray-800">
-                                    - {featuredReview.name}
-                                </p>
-                                <StarRating rating={featuredReview.rating} className="justify-center mt-3" />
-                            </CardContent>
-                        </Card>
+                    {/* Testimonial content (no white box) */}
+                    <div className="relative mt-16 text-center max-w-3xl">
+                        <h3 className="font-[Mochiy Pop P One] text-[rgba(0,0,0,1)] tracking-wide mb-4 h-[17px] top-[847px] underline decoration-solid decoration-2 decoration-[rgba(0,0,0,1)]">
+                            Farmer feedback
+                        </h3>
+                        <p className="text-xl font-sans leading-[100%] tracking-[0%] text-center w-[1098px] h-[72px] right-[171px] top-6 relative" style={{ fontFamily: 'Inter', fontWeight: 400 }}>
+                            "{featuredReview.text}"
+                        </p>
+                        <p className="mt-6 text-xl font-[Mochiy Pop P One] text-[rgba(78,77,77,1)] h-[29px] mt-6 relative">
+                            - {featuredReview.name}
+                        </p>
+                        <StarRating
+                            rating={featuredReview.rating}
+                            className="justify-center mt-1"
+                        />
                     </div>
                 </div>
             </div>
-        </div>
-        
-        <Footer />
+
+            <Footer />
         </>
     );
 };
 
-// --- FIX APPLIED HERE ---
 export default Reviews;
