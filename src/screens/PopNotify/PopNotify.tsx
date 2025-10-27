@@ -53,7 +53,7 @@ export const PopNotify = ({ isOpen, onOpenChange }: PopNotifyProps): JSX.Element
           <div className="grid gap-6 py-4">
             <div className="grid gap-3">
               <label htmlFor="name" className="[font-family:'Mochiy_Pop_P_One',Helvetica] font-normal text-[#4e4d4d] text-base">
-                Customer Name
+                Your Name
               </label>
               <Input
                 id="name"
@@ -99,7 +99,7 @@ export const PopNotify = ({ isOpen, onOpenChange }: PopNotifyProps): JSX.Element
               Our team will contact you soon for payment options and other details.
             </li>
             <li className="leading-7">
-              For any immediate questions, please call us at +91 8190962836.
+              For any immediate questions, please call us at +91 9750603988.
             </li>
           </ul>
           <AlertDialogFooter className="mt-6">
