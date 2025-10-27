@@ -71,34 +71,35 @@ export const Contact = (): JSX.Element => {
 
   return (
     <>
-      <div className="min-h-screen mb-[120px] ">
-        {/* Status Message - Above both cards */}
-        {submitStatus.type && (
-          <div 
-            className={`mx-auto max-w-[1328px] mb-6 p-4 rounded-lg text-sm font-medium ${
-              submitStatus.type === 'success' 
-                ? 'bg-green-100 text-green-700 border border-green-300' 
-                : 'bg-red-100 text-red-700 border border-red-300'
-            }`}
-            style={{
-              position: "absolute",
-              top: "150px",
-              left: "112px",
-              right: "112px",
-              zIndex: 20,
-            }}
-          >
-            {submitStatus.message}
-          </div>
-        )}
-        
-        <div className="max-w-2xl w-full flex shadow-xl rounded-[20px] overflow-hidden">
+      <div className="min-h-screen mb-[200px] flex justify-center">
+        <div className="relative w-full max-w-[1440px]">
+          {/* Status Message - Above both cards */}
+          {submitStatus.type && (
+            <div 
+              className={`mx-auto max-w-[1328px] mb-6 p-4 rounded-lg text-sm font-medium ${
+                submitStatus.type === 'success' 
+                  ? 'bg-green-100 text-green-700 border border-green-300' 
+                  : 'bg-red-100 text-red-700 border border-red-300'
+              }`}
+              style={{
+                position: "absolute",
+                top: "90px",
+                left: "112px",
+                right: "112px",
+                zIndex: 20,
+              }}
+            >
+              {submitStatus.message}
+            </div>
+          )}
+          
+          <div className="max-w-2xl w-full flex shadow-xl rounded-[20px] overflow-hidden">
           {/* LEFT SIDE: Contact Form */}
           <div
             className="w-[1111px] h-[544px] bg-[rgba(255,255,255,1)] p-10 flex flex-col"
             style={{
               borderRadius: "10px",
-              top: submitStatus.type ? "240px" : "216px",
+              top: submitStatus.type ? "180px" : "150px",
               left: "112px",
               position: "absolute",
               boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
@@ -240,7 +241,7 @@ export const Contact = (): JSX.Element => {
             className="w-[396px] h-[598px] bg-[rgba(4,42,75,1)] text-white p-10 flex flex-col justify-between"
             style={{
               borderRadius: "40px",
-              top: submitStatus.type ? "210px" : "186px",
+              top: submitStatus.type ? "150px" : "120px",
               left: "932px",
               position: "absolute",
               boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
@@ -305,6 +306,7 @@ export const Contact = (): JSX.Element => {
               </div>
             </div>
           </div>
+        </div>
         </div>
       </div>
       
