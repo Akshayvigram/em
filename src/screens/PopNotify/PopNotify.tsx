@@ -91,7 +91,7 @@ export const PopNotify = ({ isOpen, onOpenChange }: PopNotifyProps): JSX.Element
         <AlertDialogContent className="sm:max-w-[600px] w-[600px] p-8">
           <AlertDialogHeader>
             <AlertDialogTitle className="[font-family:'Mochiy_Pop_P_One',Helvetica] text-[#032a4a] text-2xl mb-2">
-              Request Received
+             ✅ Request Received
             </AlertDialogTitle>
           </AlertDialogHeader>
           <ul className="[font-family:'Inter',Helvetica] text-[#4e4d4d] mt-4 list-disc pl-6 space-y-3 text-base">
