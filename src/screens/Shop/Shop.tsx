@@ -242,12 +242,17 @@ export const Shop = (): JSX.Element => {
         <AlertDialogContent className="sm:max-w-[425px] w-[425px]">
           <AlertDialogHeader>
             <AlertDialogTitle className="[font-family:'Mochiy_Pop_P_One',Helvetica] text-[#032a4a]">
-              Order Confirmed
+              Request Received
             </AlertDialogTitle>
           </AlertDialogHeader>
-          <p className="[font-family:'Inter',Helvetica] text-[#4e4d4d] py-4">
-            Our team will contact you soon.
-          </p>
+          <ul className="[font-family:'Inter',Helvetica] text-[#4e4d4d] mt-3 list-disc pl-5 space-y-2 text-lm">
+            <li className="leading-6">
+              Our team will contact you soon for payment options and other details.
+            </li>
+            <li className="leading-6">
+              For any immediate questions, please call us at +91 8190962836.
+            </li>
+            </ul>
           <AlertDialogFooter>
             <AlertDialogAction 
               onClick={() => setIsConfirmationOpen(false)}
