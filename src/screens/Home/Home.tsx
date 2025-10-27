@@ -127,57 +127,57 @@ export const Home = (): JSX.Element => {
     <main className="w-full overflow-hidden">
       {/* ------------------ HERO SECTION ------------------ */}
       <section className="relative w-full h-[793px] bg-[#d6e6f4]">
-        <Card className="absolute top-[90px] left-[143px] w-[1180px] h-[473px] rounded-[50px] overflow-hidden border-0">
+        <Card className="absolute top-[90px] left-1/2 -translate-x-1/2 w-[1180px] h-[473px] rounded-[50px] overflow-hidden border-0">
           <CardContent className="relative w-full h-full p-0">
-            <img className="absolute top-0 left-0 w-full h-full object-cover" alt="Background" src="/image-30.png" />
-            <div className="absolute top-[154px] left-[145px] w-[445px] h-[387px]">
-              {productImages.map((image, i) => (
-                <img key={i} className={image.className} alt={image.alt} src={image.src} />
-              ))}
-              <img
-                className="absolute top-0 left-[89px] w-[360px] h-[319px] object-cover"
-                alt="Main product"
-                src="/image-34.png"
-              />
-            </div>
-            <img className="absolute top-0 left-0 w-full h-full object-cover" alt="Overlay" src="/image-36.png" />
-            <img className="absolute top-0 left-[803px] w-[594px] h-[536px]" alt="Rectangle" src="/rectangle-11.svg" />
-            <div className="absolute top-[200px] left-[590px]">
-              <h1 className="font-bold text-black text-[20.7px]">EASEMILKER</h1>
-              <p className="mt-[30px] text-black text-[17px]">
-                &quot;INNOVATING AGRICULTURE, NURTURING GROWTH&quot;
-              </p>
-            </div>
-            <img
-              className="absolute bottom-[53px] right-[75px] w-[118px] h-[45px] object-cover"
-              alt="Whatsapp contact"
-              src="/whatsapp-image-2025-08-18-at-10-26-26-am-1.png"
-            />
+        <img className="absolute top-0 left-0 w-full h-full object-cover" alt="Background" src="/image-30.png" />
+        <div className="absolute top-[154px] left-[145px] w-[445px] h-[387px]">
+          {productImages.map((image, i) => (
+            <img key={i} className={image.className} alt={image.alt} src={image.src} />
+          ))}
+          <img
+            className="absolute top-0 left-[89px] w-[360px] h-[319px] object-cover"
+            alt="Main product"
+            src="/image-34.png"
+          />
+        </div>
+        <img className="absolute top-0 left-0 w-full h-full object-cover" alt="Overlay" src="/image-36.png" />
+        <img className="absolute top-0 left-[803px] w-[594px] h-[536px]" alt="Rectangle" src="/rectangle-11.svg" />
+        <div className="absolute top-[200px] left-[590px]">
+          <h1 className="font-bold text-black text-[20.7px]">EASEMILKER</h1>
+          <p className="mt-[30px] text-black text-[17px]">
+            &quot;INNOVATING AGRICULTURE, NURTURING GROWTH&quot;
+          </p>
+        </div>
+        <img
+          className="absolute bottom-[53px] right-[75px] w-[118px] h-[45px] object-cover"
+          alt="Whatsapp contact"
+          src="/whatsapp-image-2025-08-18-at-10-26-26-am-1.png"
+        />
           </CardContent>
         </Card>
-        <div className="absolute top-[650px] left-[489px] flex gap-[98px]">
+        <div className="absolute top-[650px] left-1/2 -translate-x-1/2 flex gap-[98px]">
           {featureIcons.map((icon, i) => {
-            let handleClick;
-            if (icon.label === 'Product') {
-              handleClick = scrollToProduct;
-            } else if (icon.label === 'Features') {
-              handleClick = scrollToFeatures;
-            } else if (icon.label === 'Working') {
-              handleClick = scrollToWorking;
-            } else if (icon.label === 'App') {
-              handleClick = scrollToApp;
-            }
+        let handleClick;
+        if (icon.label === 'Product') {
+          handleClick = scrollToProduct;
+        } else if (icon.label === 'Features') {
+          handleClick = scrollToFeatures;
+        } else if (icon.label === 'Working') {
+          handleClick = scrollToWorking;
+        } else if (icon.label === 'App') {
+          handleClick = scrollToApp;
+        }
 
-            return (
-              <button
-                key={i}
-                onClick={handleClick}
-                className="flex flex-col items-center gap-[11.3px] hover:opacity-80 hover:scale-110 transition-all duration-300 cursor-pointer"
-              >
-                <img className="w-[45.19px] h-[45.19px] object-cover" alt={icon.alt} src={icon.src} />
-                <span className="text-[#999999] text-[9.8px]">{icon.label}</span>
-              </button>
-            );
+        return (
+          <button
+            key={i}
+            onClick={handleClick}
+            className="flex flex-col items-center gap-[11.3px] hover:opacity-80 hover:scale-110 transition-all duration-300 cursor-pointer"
+          >
+            <img className="w-[45.19px] h-[45.19px] object-cover" alt={icon.alt} src={icon.src} />
+            <span className="text-[#999999] text-[9.8px]">{icon.label}</span>
+          </button>
+        );
           })}
         </div>
       </section>
