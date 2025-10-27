@@ -1,5 +1,7 @@
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { Button } from "./ui/button";
+import { useState } from "react";
+import { PopNotify } from "../screens/PopNotify";
 
 const navigationItems = [
   { label: "HOME", path: "/", color: "text-[#092944]" },
@@ -11,6 +13,7 @@ const navigationItems = [
 
 export const Layout = (): JSX.Element => {
   const location = useLocation();
+  const [isOrderDialogOpen, setIsOrderDialogOpen] = useState(false);
 
   return (
     <div className="bg-[#ddefff] w-full min-w-[1440px] min-h-screen flex flex-col">
@@ -53,17 +56,23 @@ export const Layout = (): JSX.Element => {
               </Link>
             ))}
           </nav>
-          <Link to="/contact" className="no-underline">
-          <Button className="w-[99px] h-[29px] bg-[#8dc201] hover:bg-[#7ab001] rounded-[7.09px] [font-family:'Mochiy_Pop_P_One',Helvetica] font-normal text-white text-[12.4px] tracking-[0] leading-[normal]">
+          <Button 
+            onClick={() => setIsOrderDialogOpen(true)}
+            className="w-[99px] h-[29px] bg-[#8dc201] hover:bg-[#7ab001] rounded-[7.09px] [font-family:'Mochiy_Pop_P_One',Helvetica] font-normal text-white text-[12.4px] tracking-[0] leading-[normal]"
+          >
             BUY NOW
           </Button>
-          </Link>
         </div>
       </header>
 
       <main className="flex-1">
         <Outlet />
       </main>
+
+      <PopNotify 
+        isOpen={isOrderDialogOpen}
+        onOpenChange={setIsOrderDialogOpen}
+      />
     </div>
   );
 };
