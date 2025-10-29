@@ -122,7 +122,7 @@ export const Shop = (): JSX.Element => {
 
           <div className="flex items-center gap-[11px] mb-[52px]">
             <label className="[font-family:'Mochiy_Pop_P_One',Helvetica] font-normal text-[#4e4d4d] text-[12.4px] tracking-[0] leading-[normal]">
-              NUMBER OF PRODUCT:
+              NUMBER OF PRODUCT :
             </label>
             <QuantitySelector
               value={quantity}

@@ -16,6 +16,7 @@ import {
   AlertDialogFooter,
   AlertDialogAction,
 } from "../../components/ui/alert-dialog";
+import { submitOrderForm, OrderFormData } from "../../firebase/orderApi";
 
 interface PopNotifyProps {
   isOpen: boolean;
@@ -26,15 +27,44 @@ export const PopNotify = ({ isOpen, onOpenChange }: PopNotifyProps): JSX.Element
   const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
   const [customerName, setCustomerName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string>("");
 
-  const handlePlaceOrder = () => {
-    // Close the order dialog
-    onOpenChange(false);
-    // Open the confirmation dialog
-    setIsConfirmationOpen(true);
-    // Reset form fields
-    setCustomerName("");
-    setPhoneNumber("");
+  const handlePlaceOrder = async () => {
+    // Validate inputs
+    if (!customerName.trim() || !phoneNumber.trim()) {
+      setSubmitError("Please fill in all fields");
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitError("");
+
+    try {
+      const orderData: OrderFormData = {
+        customerName: customerName.trim(),
+        phoneNumber: phoneNumber.trim(),
+      };
+
+      const result = await submitOrderForm(orderData);
+
+      if (result.success) {
+        // Close the order dialog
+        onOpenChange(false);
+        // Open the confirmation dialog
+        setIsConfirmationOpen(true);
+        // Reset form fields
+        setCustomerName("");
+        setPhoneNumber("");
+      } else {
+        setSubmitError(result.message);
+      }
+    } catch (error) {
+      setSubmitError("An unexpected error occurred. Please try again.");
+      console.error("Order submission error:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -51,6 +81,11 @@ export const PopNotify = ({ isOpen, onOpenChange }: PopNotifyProps): JSX.Element
             </DialogDescription>
           </DialogHeader>
           <div className="grid gap-6 py-4">
+            {submitError && (
+              <div className="p-3 rounded-lg bg-red-100 text-red-700 border border-red-300 text-sm">
+                {submitError}
+              </div>
+            )}
             <div className="grid gap-3">
               <label htmlFor="name" className="[font-family:'Mochiy_Pop_P_One',Helvetica] font-normal text-[#4e4d4d] text-base">
                 Your Name
@@ -61,6 +96,7 @@ export const PopNotify = ({ isOpen, onOpenChange }: PopNotifyProps): JSX.Element
                 onChange={(e) => setCustomerName(e.target.value)}
                 placeholder="Enter your name"
                 className="[font-family:'Inter',Helvetica] h-12 text-base"
+                required
               />
             </div>
             <div className="grid gap-3">
@@ -74,14 +110,16 @@ export const PopNotify = ({ isOpen, onOpenChange }: PopNotifyProps): JSX.Element
                 onChange={(e) => setPhoneNumber(e.target.value)}
                 placeholder="Enter your phone number"
                 className="[font-family:'Inter',Helvetica] h-12 text-base"
+                required
               />
             </div>
           </div>
           <Button 
             onClick={handlePlaceOrder}
-            className="w-full h-12 bg-[#042a4b] hover:bg-[#053a5f] [font-family:'Mochiy_Pop_P_One',Helvetica] font-normal text-white text-base"
+            disabled={isSubmitting}
+            className="w-full h-12 bg-[#042a4b] hover:bg-[#053a5f] [font-family:'Mochiy_Pop_P_One',Helvetica] font-normal text-white text-base disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            Place Order
+            {isSubmitting ? "Submitting..." : "Place Order"}
           </Button>
         </DialogContent>
       </Dialog>
