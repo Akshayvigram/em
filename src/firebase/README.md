@@ -170,6 +170,9 @@ After configuration:
 3. Click the button and fill out the pop-up form
 4. Submit the order
 5. Check Firebase Console → Firestore Database → `orders` collection
+6. **Check your email** for the order notification (if EmailJS is configured)
+
+> **Note**: Email notifications require EmailJS setup. See `EMAILJS_SETUP.md` in the project root for configuration instructions.
 
 ## Troubleshooting
 

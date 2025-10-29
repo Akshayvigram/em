@@ -17,6 +17,7 @@ import {
   AlertDialogAction,
 } from "../../components/ui/alert-dialog";
 import { submitOrderForm, OrderFormData } from "../../firebase/orderApi";
+import { sendOrderEmailNotification } from "../../services/emailService";
 
 interface PopNotifyProps {
   isOpen: boolean;
@@ -46,9 +47,26 @@ export const PopNotify = ({ isOpen, onOpenChange }: PopNotifyProps): JSX.Element
         phoneNumber: phoneNumber.trim(),
       };
 
+      // Save to Firebase
       const result = await submitOrderForm(orderData);
 
       if (result.success) {
+        // Send email notification (runs in parallel, doesn't block success)
+        console.log('🔵 Attempting to send email notification...');
+        sendOrderEmailNotification({
+          customerName: orderData.customerName,
+          phoneNumber: orderData.phoneNumber,
+          orderDate: new Date().toLocaleString()
+        }).then((emailResult) => {
+          if (emailResult.emailSent) {
+            console.log('✅ Email notification sent successfully');
+          } else {
+            console.warn('⚠️ Email notification skipped or failed:', emailResult);
+          }
+        }).catch((err) => {
+          console.error('❌ Email notification error:', err);
+        });
+
         // Close the order dialog
         onOpenChange(false);
         // Open the confirmation dialog
