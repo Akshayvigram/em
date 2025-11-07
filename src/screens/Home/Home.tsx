@@ -1,7 +1,8 @@
 import { Button } from "../../components/ui/button";
 import { Card, CardContent } from "../../components/ui/card";
 import { Footer } from "../../components/footer";
-import { Link } from 'react-router-dom';
+import { PopNotify } from "../PopNotify";
+import { useState } from "react";
 
 const productImages = [
   { src: "/image-37.png", alt: "Image", className: "absolute top-[183px] left-0 w-[125px] h-[136px]" },
@@ -71,6 +72,8 @@ const appImages = [
 // MAIN HOME COMPONENT
 // ------------------------------------
 export const Home = (): JSX.Element => {
+  const [isPopNotifyOpen, setIsPopNotifyOpen] = useState(false);
+
   const scrollToProduct = () => {
     const element = document.getElementById('product-section');
     if (element) {
@@ -195,13 +198,12 @@ export const Home = (): JSX.Element => {
               Operations.
             </span>
           </div>
-          <Link to="/contact" className="no-underline">
-            <Button
-              className="absolute top-[527px] left-[269px] w-[321px] h-[79px] bg-[#8dc201] hover:bg-[#7ab001] rounded-[50px] text-white text-[25px]"
-            >
-              Buy Now
-            </Button>
-          </Link>
+          <Button
+            onClick={() => setIsPopNotifyOpen(true)}
+            className="absolute top-[527px] left-[269px] w-[321px] h-[79px] bg-[#8dc201] hover:bg-[#7ab001] rounded-[50px] text-white text-[25px]"
+          >
+            Buy Now
+          </Button>
           <p className="absolute top-[369px] left-[174px] w-[423px] text-[#84827d] text-xs text-justify">
             Smart Monitoring System, Which Provides Real-time Tracking Of Milk Yield, Machine Performance, And Animal
             Health Through A Connected Mobile App.
@@ -332,6 +334,9 @@ export const Home = (): JSX.Element => {
       </section>
 
       <Footer />
+      
+      {/* PopNotify Dialog */}
+      <PopNotify isOpen={isPopNotifyOpen} onOpenChange={setIsPopNotifyOpen} />
     </main>
   );
 };
