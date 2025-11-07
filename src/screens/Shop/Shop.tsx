@@ -1,8 +1,9 @@
 import { Button } from "../../components/ui/button";
 import { Card, CardContent } from "../../components/ui/card";
-import { Input } from "../../components/ui/input";
-import { Link } from 'react-router-dom';
+import QuantitySelector from "../../components/ui/quantity-selector";
 import { Footer } from "../../components/footer";
+import { useState } from "react";
+import { PopNotify } from "../PopNotify";
 
 // const navigationItems = [
 //   { label: "HOME", active: false },
@@ -50,7 +51,8 @@ const productHighlights = [
 ];
 
 export const Shop = (): JSX.Element => {
-  // const [quantity, setQuantity] = useState(1);
+  const [isOrderDialogOpen, setIsOrderDialogOpen] = useState(false);
+  const [quantity, setQuantity] = useState<number>(1);
 
   return (
     <div className="bg-white min-h-screen w-full">
@@ -120,13 +122,13 @@ export const Shop = (): JSX.Element => {
 
           <div className="flex items-center gap-[11px] mb-[52px]">
             <label className="[font-family:'Mochiy_Pop_P_One',Helvetica] font-normal text-[#4e4d4d] text-[12.4px] tracking-[0] leading-[normal]">
-              NUMBER OF PRODUCT:
+              NUMBER OF PRODUCT :
             </label>
-            <Input
-              type="number"
-              defaultValue="1"
-              min="1"
-              className="w-[55px] h-7 text-center [font-family:'Mochiy_Pop_P_One',Helvetica] font-normal text-[#4e4d4d] text-[12.4px] border-[#4e4d4d]"
+            <QuantitySelector
+              value={quantity}
+              onChange={setQuantity}
+              min={1}
+              className="w-[120px]"
             />
           </div>
 
@@ -153,13 +155,19 @@ export const Shop = (): JSX.Element => {
             </div>
           </div>
 
-          <Link to="/contact" className="no-underline">
-          <Button className="w-[425px] h-[54px] bg-[#042a4b] hover:bg-[#053a5f] rounded-[10px] [font-family:'Mochiy_Pop_P_One',Helvetica] font-normal text-white text-xl">
+          <Button 
+            onClick={() => setIsOrderDialogOpen(true)}
+            className="w-[425px] h-[54px] bg-[#042a4b] hover:bg-[#053a5f] rounded-[10px] [font-family:'Mochiy_Pop_P_One',Helvetica] font-normal text-white text-xl"
+          >
             BUY NOW
           </Button>
-          </Link>
         </section>
       </main>
+
+      <PopNotify 
+        isOpen={isOrderDialogOpen}
+        onOpenChange={setIsOrderDialogOpen}
+      />
       
       <Footer />
     </div>

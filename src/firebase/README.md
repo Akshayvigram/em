@@ -1,6 +1,6 @@
 # Firebase Setup Guide
 
-This guide will help you configure Firebase for the contact form.
+This guide will help you configure Firebase for the contact form and order notifications.
 
 ## Step 1: Create a Firebase Project
 
@@ -49,18 +49,32 @@ service cloud.firestore {
       allow write: if true;
       allow read: if false; // Only backend should read
     }
+    
+    match /orders/{document=**} {
+      allow write: if true;
+      allow read: if false; // Only backend should read
+    }
   }
 }
 ```
 
-### For Production (More secure):
-```
+### For Production (Recommended - More Secure):
+```javascript
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
+    // Contact form submissions
     match /contacts/{document=**} {
       allow create: if request.resource.data.keys().hasAll([
         'firstName', 'lastName', 'email', 'phoneNumber', 'message'
+      ]);
+      allow read: if false; // Only authenticated admins should read
+    }
+    
+    // Order/Pop notification submissions
+    match /orders/{document=**} {
+      allow create: if request.resource.data.keys().hasAll([
+        'customerName', 'phoneNumber'
       ]);
       allow read: if false; // Only authenticated admins should read
     }
@@ -68,8 +82,9 @@ service cloud.firestore {
 }
 ```
 
-## Step 6: Collection Structure
+## Step 6: Collections Structure
 
+### Contacts Collection
 The contact form will create documents in the `contacts` collection with the following structure:
 
 ```typescript
@@ -85,19 +100,32 @@ The contact form will create documents in the `contacts` collection with the fol
 }
 ```
 
-## Step 7: View Submitted Forms
+### Orders Collection
+The pop notification order form will create documents in the `orders` collection with the following structure:
 
-To view submitted contact forms:
+```typescript
+{
+  customerName: string,
+  phoneNumber: string,
+  createdAt: Timestamp,
+  status: 'new' | 'processing' | 'completed'
+}
+```
+
+## Step 7: View Submitted Data
+
+To view submitted contact forms and orders:
 1. Go to Firebase Console
 2. Navigate to "Firestore Database"
-3. Look for the "contacts" collection
-4. All form submissions will appear here
+3. Look for the "contacts" collection (contact form submissions)
+4. Look for the "orders" collection (pop notification order requests)
+5. All submissions will appear in their respective collections
 
 ## Optional: Set Up Email Notifications
 
-You can set up Cloud Functions to send email notifications when a new contact form is submitted. This requires:
+You can set up Cloud Functions to send email notifications when a new contact form or order is submitted. This requires:
 1. Enabling Cloud Functions in Firebase
-2. Setting up a trigger function for new documents in the `contacts` collection
+2. Setting up trigger functions for new documents in the `contacts` and `orders` collections
 3. Configuring an email service (SendGrid, Mailgun, etc.)
 
 ## Environment Variables (Optional)
@@ -129,10 +157,22 @@ const firebaseConfig = {
 ## Testing
 
 After configuration:
+
+### Testing Contact Form:
 1. Run your development server
 2. Navigate to the Contact page
 3. Fill out and submit the form
-4. Check Firebase Console to verify the data was saved
+4. Check Firebase Console → Firestore Database → `contacts` collection
+
+### Testing Order Form:
+1. Run your development server
+2. Navigate to any page with the "Place Order" button
+3. Click the button and fill out the pop-up form
+4. Submit the order
+5. Check Firebase Console → Firestore Database → `orders` collection
+6. **Check your email** for the order notification (if EmailJS is configured)
+
+> **Note**: Email notifications require EmailJS setup. See `EMAILJS_SETUP.md` in the project root for configuration instructions.
 
 ## Troubleshooting
 
