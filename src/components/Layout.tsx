@@ -5,7 +5,7 @@ const navigationItems = [
   { label: "HOME", path: "/", color: "text-[#092944]" },
   { label: "SHOP", path: "/shop", color: "text-[#042a4b]" },
   { label: "MOBILE APP", path: "/mobile-app", color: "text-[#8dc201]" },
-  { label: "REVIEWS", path: "/reviews", color: "text-[#092944]" },
+  // { label: "REVIEWS", path: "/reviews", color: "text-[#092944]" },
   { label: "CONTACT", path: "/contact", color: "text-[#092944]" },
 ];
 

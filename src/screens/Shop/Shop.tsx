@@ -99,7 +99,7 @@ export const Shop = (): JSX.Element => {
           </h1>
 
           <div className="[font-family:'Inter',Helvetica] font-bold text-black text-xl tracking-[0] leading-[13.5px] mb-[38px]">
-            ₹175.00
+            ₹29,999.00
           </div>
 
           <Card className="w-[425px] bg-[#cae5fd] rounded-[14px] border border-solid border-[#0a4bd5] mb-[43px]">

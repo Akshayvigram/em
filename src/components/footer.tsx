@@ -25,9 +25,9 @@ export const Footer = (): JSX.Element => {
             <a href="#" className="hover:text-[#8dc201]">
               <i className="fab fa-whatsapp"></i>
             </a>
-            <a href="#" className="hover:text-[#8dc201]">
+            {/* <a href="#" className="hover:text-[#8dc201]">
               <i className="fab fa-x-twitter"></i>
-            </a>
+            </a> */}
           </div>
         </div>
 
@@ -35,11 +35,11 @@ export const Footer = (): JSX.Element => {
         <div>
             <h3 className="font-semibold mb-3 text-lg">Quick Links</h3>
             <ul className="space-y-1 text-xs text-gray-300">
-            <li><a href="#" className="hover:text-[#8dc201]">Home</a></li>
-            <li><a href="#" className="hover:text-[#8dc201]">Shop</a></li>
-            <li><a href="#" className="hover:text-[#8dc201]">Mobile App</a></li>
-            <li><a href="#" className="hover:text-[#8dc201]">Review</a></li>
-            <li><a href="#" className="hover:text-[#8dc201]">Helpline</a></li>
+            <li><a href="/" className="hover:text-[#8dc201]">Home</a></li>
+            <li><a href="/shop" className="hover:text-[#8dc201]">Shop</a></li>
+            <li><a href="/mobile-app" className="hover:text-[#8dc201]">Mobile App</a></li>
+            {/* <li><a href="/reviews" className="hover:text-[#8dc201]">Review</a></li> */}
+            <li><a href="/contact" className="hover:text-[#8dc201]">Helpline</a></li>
             </ul>
         </div>
 
@@ -60,11 +60,11 @@ export const Footer = (): JSX.Element => {
           <ul className="space-y-2 text-xs text-gray-300">
             <li className="flex items-center gap-2">
               <Phone size={14} className="text-[#8dc201]" />
-              <span>+91 9789889776</span>
+              <span>+91 9750603988</span>
             </li>
             <li className="flex items-center gap-2">
               <Mail size={14} className="text-[#8dc201]" />
-              <span>azhizensolutions@gmail.com</span>
+              <span>azhizensolutions@azhizen.com</span>
             </li>
             <li className="flex items-start gap-2">
               <MapPin size={14} className="text-[#8dc201] mt-1" />

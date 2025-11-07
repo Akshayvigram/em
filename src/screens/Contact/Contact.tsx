@@ -110,7 +110,7 @@ export const Contact = (): JSX.Element => {
               Send us a message
             </h2>
             <p className="mb-10 mt-3 max-w-[650px] size-15" style={{ color: "rgba(153, 153, 153, 1)" }}>
-              Do you have a question? A complaint? Or need any help to choose the right product from Zalomi. Feel free to contact us
+              Do you have a question? A complaint? Or need any help to choose the right product from Azhizen. Feel free to contact us
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -260,7 +260,7 @@ export const Contact = (): JSX.Element => {
                   <IconPhone />
                   <div>
                     <h3 className="text-xs text-white mb-0.5">Helpline</h3>
-                    <p className="text-gray-300 text-xs">+91 9874563210</p>
+                    <p className="text-gray-300 text-xs">+91 9750603988</p>
                   </div>
                 </div>
 
@@ -268,7 +268,7 @@ export const Contact = (): JSX.Element => {
                   <IconMail />
                   <div>
                     <h3 className="text-xs font-normal text-white mb-0.5">Email</h3>
-                    <p className="text-gray-300 text-xs">azhizensolutions@azhzen.com</p>
+                    <p className="text-gray-300 text-xs">azhizensolutions@azhizen.com</p>
                   </div>
                 </div>
 
@@ -276,7 +276,7 @@ export const Contact = (): JSX.Element => {
                   <IconSms />
                   <div>
                     <h3 className="text-xs font-normal text-white mb-0.5">SMS/ What's app</h3>
-                    <p className="text-gray-300 text-xs">+91 9874563210</p>
+                    <p className="text-gray-300 text-xs">+91 9750603988</p>
                   </div>
                 </div>
               </div>
@@ -300,9 +300,9 @@ export const Contact = (): JSX.Element => {
                 <a href="#" className="hover:opacity-80 transition">
                   <img src="/whatsapp.png" alt="WhatsApp" className="w-[28px] h-[28px]" style={{ filter: 'brightness(0) invert(1)' }} />
                 </a>
-                <a href="#" className="hover:opacity-80 transition">
+                {/* <a href="#" className="hover:opacity-80 transition">
                   <img src="/x.png" alt="X" className="w-[24px] h-[24px]" style={{ filter: 'brightness(0) invert(1)' }} />
-                </a>
+                </a> */}
               </div>
             </div>
           </div>
